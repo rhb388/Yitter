@@ -1,7 +1,7 @@
 # About
 
-Nitter is a free and open source alternative Twitter front-end focused on
-privacy. The source is available on GitHub at <https://github.com/zedeus/nitter>
+Yitter is a free and open source alternative Twitter front-end focused on
+privacy built from Nitter. The open source code for Nitter is available on GitHub at <https://github.com/zedeus/nitter>
 
 * No JavaScript or ads
 * All requests go through the backend, client never talks to Twitter
@@ -13,12 +13,7 @@ privacy. The source is available on GitHub at <https://github.com/zedeus/nitter>
 * Mobile support (responsive design)
 * AGPLv3 licensed, no proprietary instances permitted
 
-Nitter's GitHub wiki contains
-[instances](https://github.com/zedeus/nitter/wiki/Instances) and
-[browser extensions](https://github.com/zedeus/nitter/wiki/Extensions)
-maintained by the community.
-
-## Why use Nitter?
+## Why use Yitter?
 
 It's basically impossible to use Twitter without JavaScript enabled. If you try,
 you're redirected to the legacy mobile version which is awful both functionally
@@ -26,9 +21,7 @@ and aesthetically. For privacy-minded folks, preventing JavaScript analytics and
 potential IP-based tracking is important, but apart from using the legacy mobile
 version and a VPN, it's impossible.
 
-Using an instance of Nitter (hosted on a VPS for example), you can browse
-Twitter without JavaScript while retaining your privacy. In addition to
-respecting your privacy, Nitter is on average around 15 times lighter than
+In addition to respecting your privacy, Yitter is on average around 15 times lighter than
 Twitter, and in some cases serves pages faster.
 
 In the future a simple account system will be added that lets you follow Twitter
@@ -46,5 +39,4 @@ XMR: 42hKayRoEAw4D6G6t8mQHPJHQcXqofjFuVfavqKeNMNUZfeJLJAcNU19i1bGdDvcdN6romiSscW
 
 ## Contact
 
-Feel free to join our Freenode IRC channel at #nitter, or our
-[Matrix channel](https://matrix.to/#/#nitter:matrix.org).
+Feel free to contact us at [yitterapp@protonmail.com](mailto:yitterapp@protonmail.com).
