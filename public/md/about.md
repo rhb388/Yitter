@@ -1,7 +1,8 @@
 # About
 
-Yitter is a free and open source alternative Twitter front-end focused on
-privacy built from Nitter. The open source code for Nitter is available on GitHub at <https://github.com/zedeus/nitter>
+Yitter an alternative front-end for Twitter that focuses on your privacy.  Yitter is free and open source software forked from Nitter.  Our open source code is available on Github at <https://github.com/rhb388/yitter>
+
+The open source code for Nitter is available on GitHub at <https://github.com/zedeus/nitter>
 
 * No JavaScript or ads
 * All requests go through the backend, client never talks to Twitter
