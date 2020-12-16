@@ -27,7 +27,7 @@ proc renderNavbar*(title, rss: string; req: Request): VNode =
         if rss.len > 0:
           icon "rss-feed", title="RSS Feed", href=rss
         icon "bird", title="Open in Twitter", href=twitterPath
-        a(href="https://liberapay.com/zedeus"): verbatim lp
+        icon "shopping-cart", title="Donate", href=#
         icon "info", title="About", href="/about"
         iconReferer "cog", "/settings", path, title="Preferences"
 
