@@ -31,7 +31,7 @@ proc renderNavbar*(title, rss: string; req: Request): VNode =
         iconReferer "cog", "/settings", path, title="Preferences"
 
 proc renderHead*(prefs: Prefs; cfg: Config; titleText=""; desc=""; video="";
-                 images: seq[string] = @[]; ogTitle=""): VNode =
+                 images: seq[string] = @[]; ogTitle=""; theme=""; rss=""): VNode =
   let ogType =
     if video.len > 0: "video"
     elif images.len > 0: "photo"
@@ -46,23 +46,36 @@ proc renderHead*(prefs: Prefs; cfg: Config; titleText=""; desc=""; video="";
   buildHtml(head):
     link(rel="stylesheet", `type`="text/css", href="/css/style.css?v=3")
     link(rel="stylesheet", `type`="text/css", href="/css/fontello.css?v=2")
+    link(rel="preload", type="text/css", href="/css/style.css?v=3", `as`="style")
+    link(rel="preload", type="text/css", href="/css/fontello.css?v=2", `as`="style")
+    link(rel="preload", href="/fonts/fontello.woff2?21002321", `as`="font")
+
+    link(rel="stylesheet", type="text/css", href="/css/style.css?v=3")
+    link(rel="stylesheet", type="text/css", href="/css/fontello.css?v=2")
+
+    if theme.len > 0:
+      link(rel="preload", type="text/css", href=(&"/css/themes/{theme}.css"), `as`="style")
+      link(rel="stylesheet", type="text/css", href=(&"/css/themes/{theme}.css"))
+
     link(rel="apple-touch-icon", sizes="180x180", href="/apple-touch-icon.png")
     link(rel="icon", type="image/png", sizes="32x32", href="/favicon-32x32.png")
     link(rel="icon", type="image/png", sizes="16x16", href="/favicon-16x16.png")
     link(rel="manifest", href="/site.webmanifest")
     link(rel="mask-icon", href="/safari-pinned-tab.svg", color="#ff6c60")
+@@ -55,12 +64,15 @@ proc renderHead*(prefs: Prefs; cfg: Config; titleText=""; desc=""; video="";   
     link(rel="search", type="application/opensearchdescription+xml", title=cfg.title,
                             href=opensearchUrl)
 
     if prefs.hlsPlayback:
-      script(src="/js/hls.light.min.js")
-      script(src="/js/hlsPlayback.js")
+      script(src="/js/hls.light.min.js", `defer`="")
+      script(src="/js/hlsPlayback.js", `defer`="")
 
     if prefs.infiniteScroll:
-      script(src="/js/infiniteScroll.js")
+      script(src="/js/infiniteScroll.js", `defer`="")
 
     title:
       if titleText.len > 0:
+@@ -92,12 +104,7 @@ proc renderMain*(body: VNode; req: Request; cfg: Config; prefs=defaultPrefs;      
         text titleText & " | " & cfg.title
       else:
         text cfg.title
@@ -91,12 +104,7 @@ proc renderMain*(body: VNode; req: Request; cfg: Config; prefs=defaultPrefs;
     theme = toLowerAscii(req.params["theme"]).replace(" ", "_")
 
   let node = buildHtml(html(lang="en")):
-    renderHead(prefs, cfg, titleText, desc, video, images, ogTitle):
-      if theme.len > 0:
-        link(rel="stylesheet", `type`="text/css", href=(&"/css/themes/{theme}.css"))
-
-      if rss.len > 0:
-        link(rel="alternate", `type`="application/rss+xml", href=rss, title="RSS feed")
+    renderHead(prefs, cfg, titleText, desc, video, images, ogTitle, theme, rss)
 
     body:
       renderNavbar(cfg.title, rss, req)
